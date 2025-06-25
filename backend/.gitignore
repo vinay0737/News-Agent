@@ -1,23 +1,37 @@
-# Ignore Python/Node environments
-.env
-.vin
-.venv/
-node_modules/
-
-# Ignore system files
-.DS_Store
-Thumbs.db
-
-# Ignore Git folder config (if you mistyped .vin and meant .git)
-.git/
-
-# Ignore logs and cache
-*.log
-.cache/
+# Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*$py.class
 
-# Ignore IDE/editor settings
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+*.env
+
+# NewsAPI keys or secrets
+*.key
+apikey.*
+
+# VSCode settings
 .vscode/
+
+# MacOS system files
+.DS_Store
+
+# PyCharm project settings
 .idea/
 
-.requirement.txt
+# Log files
+*.log
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+
+# OS generated files
+Thumbs.db
