@@ -1,0 +1,21 @@
+# Ignore Python/Node environments
+.env
+.vin
+.venv/
+node_modules/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore Git folder config (if you mistyped .vin and meant .git)
+.git/
+
+# Ignore logs and cache
+*.log
+.cache/
+__pycache__/
+
+# Ignore IDE/editor settings
+.vscode/
+.idea/
