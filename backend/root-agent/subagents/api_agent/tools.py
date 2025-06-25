@@ -41,7 +41,10 @@ def get_top_headlines_wrapper(**kwargs):
         "Show me top tech headlines in India"
         → get_top_headlines_wrapper(category="technology", country="in", pageSize=5)
     """
-    kwargs.setdefault("pageSize", 5)
+    if "pageSize" in kwargs:
+        kwargs["page_size"] = kwargs.pop("pageSize")
+
+    kwargs.setdefault("page_size", 5)
     return newsapi.get_top_headlines(**{k: v for k, v in kwargs.items() if v is not None})
 
 
@@ -106,8 +109,17 @@ def get_everything_wrapper(**kwargs):
         "Find articles about 'climate change' published on BBC and CNN this month sorted by relevance"
         → q="climate change", sources="bbc-news,cnn", from_param="2025-06-01", to="2025-06-24", sort_by="relevancy", pageSize=5
     """
-    return newsapi.get_everything(**{k: v for k, v in kwargs.items() if v is not None})
+    if not any(k in kwargs for k in ["q", "sources", "domains"]):
+        raise ValueError("At least one of 'q', 'sources', or 'domains' must be provided.")
 
+    # Ensure correct parameter names for SDK (e.g., page_size instead of pageSize)
+    if "pageSize" in kwargs:
+        kwargs["page_size"] = kwargs.pop("pageSize")
+
+    if "sortBy" in kwargs:
+        kwargs["sort_by"] = kwargs.pop("sortBy")
+
+    return newsapi.get_everything(**{k: v for k, v in kwargs.items() if v is not None})
 
 
 import dateparser

@@ -1,4 +1,4 @@
-#!/home/vinay/my-personal-projects/news-bot/vin/bin/python3
+#!/home/vinay/my-personal-projects/news-bot/backend/vin/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
